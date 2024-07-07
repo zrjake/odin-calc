@@ -2,6 +2,7 @@
     display: flex;
     width: 300px;
     height: 50px;
+    background-color: lightslategray;
 }
 
 button {
@@ -9,4 +10,18 @@ button {
     flex: 1;
     justify-content: center;
     align-items: center;
+    background-color: aliceblue;
+    border: 0px;
+    border-radius: 5px;
+    margin: 2px;
+}
+
+button.number {
+    background-color: rgb(136, 207, 242);
+}
+
+#inputarea {
+    width: 300px;
+    height: 50px;
+    background-color: slategray;
 }
