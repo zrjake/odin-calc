@@ -14,6 +14,7 @@ let operator = '';
 let operand1 = 0;
 
 let inputArea = document.querySelector("#inputarea");
+let calcArea = document.querySelector("#calcarea");
 let numKeys = document.querySelectorAll(".number");
 numKeys.forEach((numKey) => 
     numKey.addEventListener("click", (e) => {
@@ -23,20 +24,30 @@ numKeys.forEach((numKey) =>
 let opKeys = document.querySelectorAll(".op");
 opKeys.forEach((opKey) =>
     opKey.addEventListener("click", (e) => {
-        operand1 = Number(inputArea.textContent);
+        if (operator) {
+            let operand2 = Number(inputArea.textContent);
+            operand1 = operate(operator, operand1, operand2);
+        } else {
+            operand1 = Number(inputArea.textContent);
+        }
         inputArea.textContent = '';
         operator = e.target.textContent;
+        calcArea.textContent = operand1.toString() + operator;
     }));
 
 let equalKey = document.querySelector("#equal");
 equalKey.addEventListener("click", () => {
     let operand2 = Number(inputArea.textContent);
-    inputArea.textContent = operate(operator, operand1, operand2);
+    operand1 = operate(operator, operand1, operand2);
+    calcArea.textContent = operand1;
+    inputArea.textContent = '';
+    operator = '';
 });
 
 let clearKey = document.querySelector("#clear");
 clearKey.addEventListener("click", () => {
     inputArea.textContent = '';
+    calcArea.textContent = '';
     operator = '';
     operand1 = 0;
 })
